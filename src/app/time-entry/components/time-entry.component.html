@@ -1,0 +1,28 @@
+<div class="time-entry">
+  <h2>My Time Entries</h2>
+  <button routerLink="/time-entry/new">Add New Entry</button>
+  <table *ngIf="timeEntries.length">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Duration</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of timeEntries">
+        <td>{{ entry.taskDescription }}</td>
+        <td>{{ entry.startTime | date: 'short' }}</td>
+        <td>{{ entry.endTime | date: 'short' }}</td>
+        <td>{{ entry.duration }} mins</td>
+        <td>
+          <a [routerLink]="['/time-entry/edit', entry.id]" class="btn">Edit</a>
+          <button (click)="deleteEntry(entry.id)">Delete</button>
+        </td>
+      </tr> 
+    </tbody>
+  </table>
+</div>
+
