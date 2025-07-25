@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <div class="card shadow rounded-3">
+    <div class="card-header">
+      <h5 class="mb-0">User Registration</h5>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label>First Name</label>
+            <input class="form-control" [(ngModel)]="user.FirstName" name="firstName" required />
+          </div>
+          <div class="col-md-6">
+            <label>Last Name</label>
+            <input class="form-control" [(ngModel)]="user.LastName" name="lastName" required />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label>Email</label>
+          <input type="email" class="form-control" [(ngModel)]="user.Email" name="email" required />
+        </div>
+
+        <div class="mb-3">
+          <label>Password</label>
+          <input type="password" class="form-control" [(ngModel)]="user.PasswordHash" name="password" required />
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label>Role</label>
+            <select class="form-select" [(ngModel)]="user.Role" name="role" required>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+              <option value="operations">Operations</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label>Team ID</label>
+            <select class="form-select" [(ngModel)]="user.TeamId" name="teamId" required>
+              <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label>Hourly Rate</label>
+            <input type="number" class="form-control" [(ngModel)]="user.HourlyRate" name="hourlyRate" />
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <div class="form-check mt-4">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="user.IsActive" name="isActive" />
+              <label class="form-check-label">Is Active</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
+

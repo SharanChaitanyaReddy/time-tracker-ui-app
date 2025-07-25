@@ -1,5 +1,48 @@
-<form (ngSubmit)="login()">
-  <input [(ngModel)]="username" name="username" required placeholder="Username">
-  <input [(ngModel)]="password" name="password" required type="password" placeholder="Password">
-  <button type="submit">Login</button>
-</form>
+<div class="container min-vh-100 d-flex justify-content-center align-items-center bg-light">
+  <div class="card shadow-lg p-4 rounded-4" style="min-width: 350px; max-width: 400px; width: 100%;">
+    <div class="card-body">
+      <h4 class="text-center mb-4">TimeTracker Login</h4>
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control rounded-3"
+            id="username"
+            name="username"
+            [(ngModel)]="username"
+            required
+            placeholder="Enter your username"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control rounded-3"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            required
+            placeholder="Enter your password"
+          />
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="rememberMe" [(ngModel)]="rememberMe" name="rememberMe">
+          <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 rounded-3" [disabled]="!loginForm.form.valid">Login</button>
+
+        <div class="text-center mt-3">
+          <a href="#" class="text-decoration-none small">Forgot password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>      
+<footer class="bg-light text-center py-3 mt-auto border-top small">
+  <span>&copy; {{ footerInfo.year }} {{ footerInfo.company }} | {{ footerInfo.version }}</span>
+</footer>

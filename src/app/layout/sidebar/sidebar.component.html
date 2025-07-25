@@ -1,0 +1,23 @@
+<nav class="d-flex flex-column bg-light vh-100 p-3" style="min-width: 220px;">
+  <h5 class="mb-4">Time Tracker</h5>
+
+  <ul class="nav nav-pills flex-column">
+    <li *ngFor="let item of sidebarItems" class="nav-item">
+      <a *ngIf="!item.children" class="nav-link" [routerLink]="item.route" routerLinkActive="active">
+        <i *ngIf="item.icon" class="bi me-2" [ngClass]="item.icon"></i> {{ item.label }}
+      </a>
+
+      <div *ngIf="item.children" class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <i *ngIf="item.icon" class="bi me-2" [ngClass]="item.icon"></i> {{ item.label }}
+        </a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let child of item.children">
+            <a class="dropdown-item" [routerLink]="child.route">{{ child.label }}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+

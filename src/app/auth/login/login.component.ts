@@ -11,17 +11,30 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username: any;
   password: any;
+  rememberMe = false;
+  footerInfo: any;
+
 
   constructor(private authService: AuthService, private router: Router) {}
-login() {
-  this.authService.login(this.username, this.password).subscribe({
-    next: res => {
-      sessionStorage.setItem('token', res.token);
-      sessionStorage.setItem('role', res.role);
-      this.router.navigate(['/time-entry']);
-    },
-    error: err => alert('Invalid login')
-  });
-}
+
+  
+  ngOnInit(): void {
+    this.footerInfo = {
+      company: 'TimeTracker Inc.',
+      version: 'v1.0.3',
+      year: new Date().getFullYear()
+    };
+  }
+
+  login() {
+    this.authService.login(this.username, this.password).subscribe({
+      next: res => {
+        sessionStorage.setItem('token', res.token);
+        sessionStorage.setItem('role', res.role);
+        this.router.navigate(['/dashboard']);
+      },
+      error: err => alert('Invalid login')
+    });
+  }
 
 }

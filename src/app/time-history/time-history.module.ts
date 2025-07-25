@@ -6,14 +6,13 @@ import { TimeHistoryComponent } from './components/time-history.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
+  declarations: [    TimeHistoryComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     TimeHistoryRoutingModule,
-    HttpClientModule,
-    TimeHistoryComponent
+    HttpClientModule
   ]
 })
 export class TimeHistoryModule { }

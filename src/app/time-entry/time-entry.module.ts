@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TimeEntryComponent } from './components/time-entry.component';
 
 @NgModule({
-  declarations: [
+  declarations: [TimeEntryComponent
   ],
   imports: [
     CommonModule,

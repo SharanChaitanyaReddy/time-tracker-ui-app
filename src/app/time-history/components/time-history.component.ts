@@ -5,9 +5,9 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-time-history',
+  standalone: false,
   templateUrl: './time-history.component.html',
   styleUrls: ['./time-history.component.scss'],
-  imports: [RouterModule,HttpClientModule] // No additional imports needed here
 })
 export class TimeHistoryComponent implements OnInit {
   timeEntries: TimeEntry[] = [];
